@@ -134,7 +134,7 @@ export async function handleIncomingMessage(message, userId) {
         // -----------------------
     let parsedResponse;
         try {
-            parsedResponse = JSON.parse(rawText);
+            parsedResponse = JSON.parse(jsonString);
         } catch (e) {
             console.error("Failed to parse JSON from AI:", rawText);
             return "Sorry, I had a little trouble understanding that. Could you try again?";
