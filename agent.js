@@ -122,6 +122,16 @@ export async function handleIncomingMessage(message, userId) {
 
     // 3. Parse the response using the direct access method that works for you
     const rawText = response.text;
+    // --- THIS IS THE FIX ---
+        // 1. Find the first '{' and the last '}' in the AI's response.
+        const firstBracket = rawText.indexOf('{');
+        const lastBracket = rawText.lastIndexOf('}');
+
+        // 2. If we found both, slice the string to get only the JSON part.
+        const jsonString = (firstBracket !== -1 && lastBracket !== -1) 
+            ? rawText.substring(firstBracket, lastBracket + 1)
+            : rawText;
+        // -----------------------
     let parsedResponse;
         try {
             parsedResponse = JSON.parse(rawText);
