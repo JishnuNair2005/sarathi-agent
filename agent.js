@@ -10,16 +10,7 @@ import { handleOnboarding } from "./onboarding.js";
 const ai = new GoogleGenAI(process.env.GEMINI_API_KEY);
 
 // Function to load our database from the JSON file
-function loadDatabase() {
-  const data = fs.readFileSync('database.json', 'utf8');
-  return JSON.parse(data);
-}
 
-// Function to SAVE our database to the JSON file
-function saveDatabase(db) {
-  const data = JSON.stringify(db, null, 2);
-  fs.writeFileSync('database.json', data);
-}
 
 export async function handleIncomingMessage(message, userId) {
   try {
@@ -76,6 +67,7 @@ export async function handleIncomingMessage(message, userId) {
     --- YOUR PERSONALITY ---
     - Always be friendly, positive, and encouraging. Your tone should be like a helpful and caring friend.
     - Use emojis frequently to make the conversation feel lively and human. Some good ones are 👍, 😊, 💰, 🎉, 🛵, and 💪.
+    - if we earns more money than ${user.profile.financials.income_per_day_avg} in a day, celebrate it enthusiastically!
 
     --- YOUR FORMATTING RULES ---
     - You are communicating via WhatsApp. To make a word or phrase bold, you MUST enclose it in single asterisks. For example: *This is important*.
