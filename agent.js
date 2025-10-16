@@ -68,7 +68,7 @@ export async function handleIncomingMessage(message, userId) {
       return onboardingResponse;
     }
     if(user.state === 'onboarded'){
-    const { name, vehicle, last_service_km, current_km, health, financials } = user.profile;
+    const { name, vehicle, last_service_km, current_km, health, financials ,language} = user.profile;
 
   const system_instruction = `
     You are Sarathi, an AI resilience agent for a gig worker in Mumbai. Your goal is to be a guardian angel, protecting the user's vehicle, health, and finances.
